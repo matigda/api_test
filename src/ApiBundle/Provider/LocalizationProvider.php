@@ -24,7 +24,7 @@ class LocalizationProvider
     /**
      * @param float $pointLatitude
      * @param float $pointLongitude
-     * @param integer $radius
+     * @param int   $radius
      */
     public function __construct($pointLatitude, $pointLongitude, $radius)
     {
@@ -35,9 +35,9 @@ class LocalizationProvider
 
     public function getLocalizationData(Request $request)
     {
-        $lat = $request->get('lat')? (float) $request->get('lat') : $this->pointLatitude;
-        $long = $request->get('long')? (float) $request->get('long') : $this->pointLongitude;
-        $radius = $request->get('radius')? (int) $request->get('radius') : $this->radius;
+        $lat = $request->get('lat') ? (float) $request->get('lat') : $this->pointLatitude;
+        $long = $request->get('long') ? (float) $request->get('long') : $this->pointLongitude;
+        $radius = $request->get('radius') ? (int) $request->get('radius') : $this->radius;
 
         return [$lat, $long, $radius];
     }

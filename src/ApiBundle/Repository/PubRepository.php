@@ -11,7 +11,7 @@ class PubRepository extends DocumentRepository
     /**
      * @param float $lat
      * @param float $long
-     * @param int $radius
+     * @param int   $radius
      *
      * @return array
      *
@@ -36,6 +36,6 @@ class PubRepository extends DocumentRepository
      */
     private function transformRadiansToKilometers($radius)
     {
-        return (float) $radius/6371;
+        return (float) $radius / 6371;
     }
 }

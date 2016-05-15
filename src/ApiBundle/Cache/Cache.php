@@ -24,8 +24,8 @@ class Cache
 
     /**
      * @param CacheProvider $cacheProvider
-     * @param HashProvider $hashProvider
-     * @param int $lifetime
+     * @param HashProvider  $hashProvider
+     * @param int           $lifetime
      */
     public function __construct(CacheProvider $cacheProvider, HashProvider $hashProvider, $lifetime)
     {
@@ -48,7 +48,7 @@ class Cache
 
     /**
      * @param string $identifier
-     * @param mixed $content
+     * @param mixed  $content
      *
      * @return bool
      */

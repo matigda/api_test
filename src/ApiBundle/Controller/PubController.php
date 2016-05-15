@@ -28,8 +28,8 @@ class PubController
     private $pubFormHandler;
 
     /**
-     * @param PubProvider $pubProvider
-     * @param ObjectManager $objectManager
+     * @param PubProvider    $pubProvider
+     * @param ObjectManager  $objectManager
      * @param PubTypeHandler $pubFormHandler
      */
     public function __construct(PubProvider $pubProvider, ObjectManager $objectManager, PubTypeHandler $pubFormHandler)
@@ -42,6 +42,7 @@ class PubController
     /**
      * @Rest\View(serializerGroups={"list"})
      * @ApiDoc()
+     *
      * @param Request $request
      *
      * @return array
@@ -56,6 +57,7 @@ class PubController
     /**
      * @Rest\View(serializerGroups={"item"})
      * @ApiDoc()
+     *
      * @param string $id
      *
      * @return Pub
@@ -68,6 +70,7 @@ class PubController
     /**
      * @Rest\View(serializerGroups={"item"})
      * @ApiDoc()
+     *
      * @param Request $request
      *
      * @return mixed
@@ -86,6 +89,7 @@ class PubController
     /**
      * @Rest\View(serializerGroups={"item"})
      * @ApiDoc()
+     *
      * @param Request $request
      *
      * @return mixed
@@ -101,6 +105,7 @@ class PubController
 
     /**
      * @ApiDoc()
+     *
      * @param string $id
      *
      * @return array

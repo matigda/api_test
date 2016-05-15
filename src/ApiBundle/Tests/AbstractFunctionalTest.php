@@ -5,7 +5,6 @@ namespace ApiBundle\Tests;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\HttpKernel\Kernel;
-use Symfony\Component\Routing\RequestContext;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
 
 abstract class AbstractFunctionalTest extends WebTestCase

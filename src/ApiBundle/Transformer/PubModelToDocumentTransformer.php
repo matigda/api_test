@@ -5,7 +5,6 @@ namespace ApiBundle\Transformer;
 use ApiBundle\Document\Localization;
 use ApiBundle\Document\Pub;
 use ApiBundle\Model\PubFormModel;
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Symfony\Component\Form\DataTransformerInterface;
 

@@ -29,8 +29,8 @@ class PubTypeHandler
 
     /**
      * @param FormFactoryInterface $formFactory
-     * @param AbstractType $pubForm
-     * @param ValidatorInterface $validator
+     * @param AbstractType         $pubForm
+     * @param ValidatorInterface   $validator
      */
     public function __construct(FormFactoryInterface $formFactory, AbstractType $pubForm, ValidatorInterface $validator)
     {
@@ -66,7 +66,7 @@ class PubTypeHandler
     }
 
     /**
-     * @param Request $request
+     * @param Request      $request
      * @param PubFormModel $pubModel
      *
      * @return mixed

@@ -27,8 +27,8 @@ class PubProvider
     private $localizationProvider;
 
     /**
-     * @param ObjectManager $objectManager
-     * @param Cache $cache
+     * @param ObjectManager        $objectManager
+     * @param Cache                $cache
      * @param LocalizationProvider $localizationProvider
      */
     public function __construct(ObjectManager $objectManager, Cache $cache, LocalizationProvider $localizationProvider)
@@ -50,7 +50,6 @@ class PubProvider
         $identifier = $lat . $long . $radius;
 
         if (false === $pubs = $this->cache->get($identifier)) {
-
             $pubs = $this->pubRepository->getPubsNearCoordinatesWithinRadius($lat, $long, $radius);
 
             $this->cache->save($identifier, $pubs);
@@ -61,14 +60,13 @@ class PubProvider
 
     /**
      * @param string $id
-     * @param bool $getPersisted
+     * @param bool   $getPersisted
      *
      * @return Pub
      */
     public function getPub($id, $getPersisted = false)
     {
         if (false === $pub = $this->cache->get($id)) {
-
             $pub = $this->getPubFromRepository($id);
 
             $this->cache->save($id, $pub);
@@ -96,7 +94,7 @@ class PubProvider
     }
 
     /**
-     * @param Pub $pub
+     * @param Pub  $pub
      * @param bool $getPersisted
      *
      * @return Pub

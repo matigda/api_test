@@ -55,6 +55,7 @@ class Pub
     public function setLocalization(Localization $localization)
     {
         $this->localization = $localization;
+
         return $this;
     }
 
