@@ -1,0 +1,26 @@
+<?php
+
+namespace ApiBundle\Document;
+
+class Localization
+{
+    /**
+     * @var string
+     */
+    public $type = 'Point';
+
+    /**
+     * @var float[]
+     */
+    public $cords;
+
+    /**
+     * @param array $coordinates
+     */
+    public function __construct(array $coordinates)
+    {
+        $this->cords = array_map(function ($cord) {
+            return (float) $cord;
+        }, $coordinates);
+    }
+}

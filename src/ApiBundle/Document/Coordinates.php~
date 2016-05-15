@@ -1,0 +1,10 @@
+<?php
+
+namespace ApiBundle\Document;
+
+class Coordinates
+{
+    public $latitude;
+
+    public $longitude;
+}

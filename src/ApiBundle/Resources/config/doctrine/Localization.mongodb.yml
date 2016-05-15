@@ -1,0 +1,7 @@
+ApiBundle\Document\Localization:
+    type: embeddedDocument
+    fields:
+        type:
+            type: string
+        coordinates:
+            type: collection

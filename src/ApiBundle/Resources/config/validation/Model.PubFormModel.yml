@@ -1,0 +1,8 @@
+ApiBundle\Model\PubFormModel:
+    properties:
+        name:
+            - NotBlank: ~
+        latitude:
+            - NotBlank: ~
+        longitude:
+            - NotBlank: ~

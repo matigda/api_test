@@ -1,0 +1,55 @@
+services:
+    api.pub.controller:
+        class: ApiBundle\Controller\PubController
+        arguments:
+            - '@api.pub.provider'
+            - '@doctrine.odm.mongodb.document_manager'
+            - '@api.pub.form_handler'
+
+    api.hash.provider:
+        class: ApiBundle\Provider\HashProvider
+
+
+    api.localization.provider:
+        class: ApiBundle\Provider\LocalizationProvider
+        arguments:
+            - '%api.point.latitude%'
+            - '%api.point.longitude%'
+            - '%api.radius%'
+
+    api.pub.provider:
+        class: ApiBundle\Provider\PubProvider
+        arguments:
+            - '@doctrine.odm.mongodb.document_manager'
+            - '@api.cache.provider'
+            - '@api.localization.provider'
+
+    api.pub.form_handler:
+        class: ApiBundle\Form\PubTypeHandler
+        arguments:
+            - '@form.factory'
+            - '@api.pub.form'
+            - '@validator'
+
+    api.pub.form:
+        class: ApiBundle\Form\PubType
+        arguments:
+            - '@api.pub.repository'
+
+    api.pub.repository:
+        class: ApiBundle\Repository\PubRepository
+        factory: ['@doctrine.odm.mongodb.document_manager', 'getRepository']
+        arguments:
+            - 'ApiBundle\Document\Pub'
+
+    api.cache.provider:
+        class: ApiBundle\Cache\Cache
+        arguments:
+            - '@api.cache.redis_client'
+            - '@api.hash.provider'
+            - '%api.cache_lifetime%'
+
+    api.cache.redis_client:
+        class: Snc\RedisBundle\Doctrine\Cache\RedisCache
+        calls:
+            - ['setRedis', ['@snc_redis.default']]

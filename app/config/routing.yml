@@ -1,0 +1,9 @@
+api:
+    resource: "@ApiBundle/Resources/config/routing.yml"
+    type: rest
+    prefix:   /api/v1
+    defaults: { _format: json }
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc

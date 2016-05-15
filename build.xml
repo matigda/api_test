@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+
+    <target name="qc" depends="phpmd,phpcs,phpunit,sensio-security"/>
+
+    <target name="phpmd">
+        <exec executable="php" failonerror="true">
+            <arg value="bin/phpmd"/>
+            <arg value="src"/>
+            <arg value="text"/>
+            <arg value="codesize"/>
+        </exec>
+    </target>
+
+    <target name="phpcs">
+        <exec executable="php" failonerror="true">
+            <arg value="bin/phpcs"/>
+            <arg value="src"/>
+            <arg value="--standard=PSR2"/>
+            <arg value="--extensions=php"/>
+        </exec>
+    </target>
+
+    <target name="phpcsfixer">
+        <exec executable="php" failonerror="true">
+            <arg value="bin/php-cs-fixer"/>
+            <arg value="fix"/>
+            <arg value="src/"/>
+            <arg value="--rules=@Symfony,-concat_without_spaces"/>
+            <arg value="--dry-run"/>
+            <arg value="-v"/>
+            <arg value="--using-cache=false"/>
+        </exec>
+    </target>
+
+    <target name="phpcsfixer-fix">
+        <exec executable="php" failonerror="true">
+            <arg value="bin/php-cs-fixer"/>
+            <arg value="fix"/>
+            <arg value="src/"/>
+            <arg value="--rules=@Symfony,-concat_without_spaces"/>
+            <arg value="-v"/>
+            <arg value="--using-cache=false"/>
+        </exec>
+    </target>
+
+    <target name="phpunit">
+        <exec executable="php" failonerror="true">
+            <arg value="bin/phpunit"/>
+            <arg value="-c"/>
+            <arg value="app/phpunit.xml.dist"/>
+            <arg value="-d"/>
+        </exec>
+    </target>
+
+    <target name="sensio-security" description="Security Advisories Checker">
+        <exec executable="curl" failonerror="true">
+            <arg line='-H "Accept: text/plain" https://security.sensiolabs.org/check_lock -F lock=@composer.lock'/>
+        </exec>
+    </target>
+
+</project>

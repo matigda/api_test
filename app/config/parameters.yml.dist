@@ -1,0 +1,19 @@
+parameters:
+    database_host: localhost
+    database_port: 27017
+    database_name: api_test
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: d35197d4ec64aee42adcb44398c8c55c89a2682c
+    cache_lifetime: 30
+    redis_host: localhost
+    redis_port: 6379
+    redis_db: 1
+    radius: 2
+    database_test_name: test_database
+    point_latitude: 54.348708
+    point_longitude: 18.653240

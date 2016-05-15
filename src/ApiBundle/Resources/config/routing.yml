@@ -1,0 +1,24 @@
+pub_list:
+    path:     /pubs
+    defaults: { _controller: api.pub.controller:listAction }
+    methods: [GET]
+
+pub_create:
+    path:     /pubs
+    defaults: { _controller: api.pub.controller:createAction }
+    methods: [POST]
+
+pub_item:
+    path:     /pubs/{id}
+    defaults: { _controller: api.pub.controller:itemAction }
+    methods: [GET]
+
+pub_item_update:
+    path:     /pubs/{id}
+    defaults: { _controller: api.pub.controller:updateAction }
+    methods: [PUT]
+
+pub_item_delete:
+    path:     /pubs/{id}/delete
+    defaults: { _controller: api.pub.controller:deleteAction }
+#    methods: [DELETE]

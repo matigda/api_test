@@ -1,0 +1,14 @@
+ApiBundle\Document\Pub:
+    repositoryClass: ApiBundle\Repository\PubRepository
+    indexes:
+      localization:
+        keys:
+          localization: 2dsphere
+    fields:
+        id:
+            id: true
+        name:
+            type: string
+    embedOne:
+        localization:
+            targetDocument: ApiBundle\Document\Localization

@@ -1,0 +1,7 @@
+ApiBundle\Document\Localization:
+    exclusion_policy: ALL
+    properties:
+        coordinates:
+            type: array
+            groups:
+                - item

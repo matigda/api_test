@@ -1,0 +1,12 @@
+ApiBundle\Document\Pub:
+    exclusion_policy: ALL
+    properties:
+        name:
+            type: string
+            groups:
+                - item
+                - list
+        localization:
+            type: ApiBundle\Document\Localization
+            groups:
+                - item

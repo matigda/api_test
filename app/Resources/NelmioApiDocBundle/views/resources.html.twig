@@ -1,0 +1,72 @@
+{% extends "NelmioApiDocBundle::layout.html.twig" %}
+
+{% block content %}
+    {% for section, sections in resources  %}
+        {% if section != '_others' %}
+            <li class="section{{ defaultSectionsOpened? ' active':'' }}">
+                <div class="actions">
+                    <a class="action-show-hide">Show/hide</a>
+                    <a class="action-list">List Operations</a>
+                    <a class="action-expand">Expand Operations</a>
+                </div>
+                <h1>{{ section }}</h1>
+                <ul class="section-list" {% if not defaultSectionsOpened %}style="display: none"{% endif %}>
+        {% endif %}
+        {% for resource, methods in sections %}
+            <li class="resource">
+                <div class="heading">
+                    {% if section == '_others' and resource != 'others' %}
+                        <h2>{{ resource }}</h2>
+                    {% elseif resource != 'others' %}
+                        <h2>{{ resource }}</h2>
+                    {% endif %}
+                </div>
+                <ul class="endpoints">
+                    <li class="endpoint">
+                        <ul class="operations">
+                            {% for data in methods %}
+                                {% if data.id == 'get--api-v1-pubs.{_format}' %}
+                                    {% include 'NelmioApiDocBundle::method_get_pubs.html.twig' %}
+                                {% else %}
+                                    {% include 'NelmioApiDocBundle::method.html.twig' %}
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        {% endfor %}
+        {% if section != '_others' %}
+                </ul>
+            </li>
+        {% endif %}
+    {% endfor %}
+
+    <script>
+        $(document).ready(function() {
+            $('#submit-with-coords').on('click', function (e) {
+                e.preventDefault();
+                var form = $(this).parents('form');
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(setFormPosition);
+                } else {
+                    alert("Geolocation is not supported by this browser.");
+                }
+
+                function setFormPosition(position) {
+                    var lat = position.coords.latitude;
+                    var long = position.coords.longitude;
+                    var formActionUrl = form.attr('action');
+
+                    form.attr('action', formActionUrl + "?lat=" +lat + "&long=" + long);
+
+                    form.submit();
+
+                    form.attr('action', formActionUrl);
+                }
+            })
+        })
+    </script>
+
+{% endblock content %}
