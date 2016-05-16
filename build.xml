@@ -49,7 +49,6 @@
             <arg value="bin/phpunit"/>
             <arg value="-c"/>
             <arg value="app/phpunit.xml.dist"/>
-            <arg value="-d"/>
         </exec>
     </target>
 

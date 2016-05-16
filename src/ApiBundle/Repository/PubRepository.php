@@ -6,16 +6,10 @@ use Doctrine\ODM\MongoDB\Cursor;
 use Doctrine\ODM\MongoDB\DocumentRepository;
 use Doctrine\ODM\MongoDB\MongoDBException;
 
-class PubRepository extends DocumentRepository
+class PubRepository extends DocumentRepository implements PubRepositoryInterface
 {
     /**
-     * @param float $lat
-     * @param float $long
-     * @param int   $radius
-     *
-     * @return array
-     *
-     * @throws MongoDBException
+     * {@inheritdoc}
      */
     public function getPubsNearCoordinatesWithinRadius($lat, $long, $radius)
     {

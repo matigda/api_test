@@ -5,6 +5,7 @@ namespace ApiBundle\Provider;
 use ApiBundle\Cache\Cache;
 use ApiBundle\Document\Pub;
 use ApiBundle\Exception\PubNotFoundException;
+use ApiBundle\Repository\PubRepositoryInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,14 +28,19 @@ class PubProvider
     private $localizationProvider;
 
     /**
-     * @param ObjectManager        $objectManager
-     * @param Cache                $cache
+     * @param ObjectManager $objectManager
+     * @param PubRepositoryInterface $pubRepository
+     * @param Cache $cache
      * @param LocalizationProvider $localizationProvider
      */
-    public function __construct(ObjectManager $objectManager, Cache $cache, LocalizationProvider $localizationProvider)
-    {
+    public function __construct(
+        ObjectManager $objectManager,
+        PubRepositoryInterface $pubRepository,
+        Cache $cache,
+        LocalizationProvider $localizationProvider
+    ) {
         $this->objectManager = $objectManager;
-        $this->pubRepository = $objectManager->getRepository(Pub::class);
+        $this->pubRepository = $pubRepository;
         $this->cache = $cache;
         $this->localizationProvider = $localizationProvider;
     }

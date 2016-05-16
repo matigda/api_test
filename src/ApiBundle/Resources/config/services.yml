@@ -21,6 +21,7 @@ services:
         class: ApiBundle\Provider\PubProvider
         arguments:
             - '@doctrine.odm.mongodb.document_manager'
+            - '@api.pub.repository'
             - '@api.cache.provider'
             - '@api.localization.provider'
 

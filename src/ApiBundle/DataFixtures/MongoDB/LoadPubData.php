@@ -27,6 +27,7 @@ class LoadPubData implements FixtureInterface
         $pubs[] = $this->createNewPub('Absynt', 18.648497, 54.351950);
         $pubs[] = $this->createNewPub('Green', 18.59289, 54.38978);
         $pubs[] = $this->createNewPub('Parlament', 18.64976, 54.35109);
+        $pubs[] = $this->createNewPub('Lobster', 18.57119, 54.40275);
 
         foreach ($pubs as $pub) {
             $manager->persist($pub);
